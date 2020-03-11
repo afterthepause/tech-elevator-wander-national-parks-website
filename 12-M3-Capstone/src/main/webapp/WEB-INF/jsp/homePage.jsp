@@ -6,7 +6,7 @@
 
 <c:forEach var="park" items="${parks}">
 
-<c:url var = "parkDetailURL" value = "/productDetail">
+<c:url var = "parkDetailURL" value = "/parkDetail">
 <c:param name = "currentParkCode" value = "${park.parkCode}"/>
 </c:url>
 
