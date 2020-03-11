@@ -3,21 +3,32 @@
 
 <div id="homepage">
 
-<ol>
+
 <c:forEach var="park" items="${parks}">
 
+<c:url var = "parkDetailURL" value = "/productDetail">
+<c:param name = "currentParkCode" value = "${park.parkCode}"/>
+</c:url>
+
+
 <c:url var="imgUrl" value="/img/parks/${park.parkCode.toLowerCase()}.jpg" />
-<img src="${imgUrl}" />
-${park.parkName}
+
+<a href="${parkDetailURL}">
+<img src="${imgUrl}"/>
+</a>
+
+<h1><c:out value = "${park.parkName}"/></h1>
+
 <p class="description">
-${park.parkDescription }
+<c:out value = "${park.parkDescription}"/>
 </p>
+
 <br>
 
 
 
 </c:forEach>
-</ol>
+
 
 
 

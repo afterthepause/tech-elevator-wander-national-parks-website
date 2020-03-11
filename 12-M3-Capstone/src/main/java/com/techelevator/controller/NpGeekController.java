@@ -29,8 +29,8 @@ public class NpGeekController {
 		return "homePage";
 	}
 	@RequestMapping(path="/parkDetail", method=RequestMethod.GET)
-	public String parkDetailPage(@RequestParam String parkCode, ModelMap map) {
-		Parks park = parksDao.getByCode(parkCode);
+	public String parkDetailPage(@RequestParam String currentParkCode, ModelMap map) {
+		Parks park = parksDao.getByCode(currentParkCode);
 		map.addAttribute("park", park);
 		return "parkDetail";
 	}
