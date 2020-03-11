@@ -8,16 +8,17 @@ import javax.sql.DataSource;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.rowset.SqlRowSet;
-
+import org.springframework.stereotype.Component;
 
 import com.techelevator.model.Parks;
 import com.techelevator.model.Weather;
 
+@Component
 public class JdbcParksDao implements ParksDao {
 	
 	//sql statements
-	private static final String SELECT_PARKS_SQL = "SELECT park.parkcode, park.parkname, park.state, park.acreage, park.elevationinfeet, park.milesoftrail, park.numberofcampsites, park.climate, park.yearfounded, park.annualvisitorcount, park.inspirationalquote, park.inspirationalquotesource, park.parkdescription, park.entryfee, park.numberofanimalspecies FROM park";
-	private static final String SELECT_WEATHER_SQL = "SELECT weather.parkcode, weather.fivedayforecastvalue, weather.low, weather.high, weather.forecast FROM weather";
+	private static final String SELECT_PARKS_SQL = "SELECT * FROM park";
+	private static final String SELECT_WEATHER_SQL = "SELECT * FROM weather";
 	
 	private final JdbcTemplate jdbcTemplate;
 	
@@ -48,15 +49,20 @@ public class JdbcParksDao implements ParksDao {
 		return null;
 	}
 	
+	@Override
+	public List<Parks> getAllParks() {
+		List<Parks> parks = new ArrayList<Parks>();
+		String sql = SELECT_PARKS_SQL;
+		SqlRowSet results = jdbcTemplate.queryForRowSet(sql);
+		
+		while(results.next()) {
+			Parks park = mapRowSetToPark(results);
+			parks.add(park);
+		}
+		return parks;
+	}
 	
-	//add parks to map
-	private List<Parks> mapRowSetToParks(SqlRowSet pResults) {
-	        List<Parks> parks = new ArrayList<>();
-	        while (pResults.next()) {
-	            parks.add(mapRowSetToPark(pResults));
-	        }
-	        return parks;
-	    }
+	
 	
 	private Parks mapRowSetToPark(SqlRowSet pResults) {
         Parks parks = new Parks();
@@ -70,7 +76,7 @@ public class JdbcParksDao implements ParksDao {
         parks.setClimate(pResults.getString("climate"));
         parks.setYearFounded(pResults.getInt("yearfounded"));
         parks.setAnnualVisitorCount(pResults.getInt("annualvisitorcount"));
-        parks.setInspirationalQuote(pResults.getString("insprationalquote"));
+        parks.setInspirationalQuote(pResults.getString("inspirationalquote"));
         parks.setInspirationalQuoteSource(pResults.getString("inspirationalquotesource"));
         parks.setParkDescription(pResults.getString("parkdescription"));
         parks.setEntryFee(pResults.getInt("entryfee"));
@@ -97,6 +103,8 @@ public class JdbcParksDao implements ParksDao {
 		weather.setForecast(wResults.getString("forecast"));
 		return weather;
 	}
+
+	
 
 	
 	
