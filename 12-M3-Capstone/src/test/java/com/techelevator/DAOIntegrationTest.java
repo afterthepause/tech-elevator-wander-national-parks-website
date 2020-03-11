@@ -47,4 +47,7 @@ public abstract class DAOIntegrationTest {
 	public DataSource getDataSource() {
 		return dataSource;
 	}
+	
+	
+	
 }
