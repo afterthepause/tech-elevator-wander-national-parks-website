@@ -39,14 +39,19 @@ public class JdbcParksDao implements ParksDao {
 		return null;
 	}
 	
+	
 	//pull in weather by Park Code
 	@Override
-	public Weather getWeatherByCode(String parkCode) {
-		SqlRowSet result = jdbcTemplate.queryForRowSet(SELECT_WEATHER_SQL + " Where code = ?", parkCode);
-		if(result.next()) {
-			return mapRowSetToWeather(result);
+	public List<Weather> getWeatherByCode(String parkCode) {
+		List<Weather> weatherList = new ArrayList<Weather>();
+		String sql = (SELECT_WEATHER_SQL +  " Where parkcode = ?");
+				SqlRowSet results = jdbcTemplate.queryForRowSet(sql, parkCode);
+		while(results.next()) {
+			Weather weather = mapRowSetToWeather(results);
+			weatherList.add(weather);
+			
 		}
-		return null;
+		return weatherList;
 	}
 	
 	@Override
@@ -103,6 +108,8 @@ public class JdbcParksDao implements ParksDao {
 		weather.setForecast(wResults.getString("forecast"));
 		return weather;
 	}
+
+	
 
 	
 

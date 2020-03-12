@@ -5,42 +5,68 @@
 </c:import>
 
 <body class="parklisting">
+<div class="parkdetail">
+<div class="headingdetail">
 <h1 class="pagedetailh1"><c:out value="${park.parkName}" /></h1>
+</div>
+
+<div class="quote">
 <p class="quote">"<c:out value="${park.inspirationalQuote}" />"
-<br>
--<c:out value="${park.inspirationalQuoteSource}" />
-<br>
+- <c:out value="${park.inspirationalQuoteSource}" />
 </p>
+</div>
+
+
+<div class="detailimg">
 <c:url var="imgUrl" value="/img/parks/${park.parkCode.toLowerCase()}.jpg" />
 <img class="pagedetailimg" src="${imgUrl}"/>
-<div>
+</div>
+
+<div class="detaildesc">
 <p class="pagedetaildescription">
 <c:out value="${park.parkDescription}" />
 </p>
 </div>
-<div class="table">
-<table>
-<tr><th class="header">Park Facts</th><tr>
 
-<tr><td class="one">Location: <c:out value="${park.state}" /></td></tr>
 
-<tr><td class="two">Park Size: <c:out value="${park.acreage}" /> acres</td></tr>
 
-<tr><td class="one">Elevation: <c:out value="${park.elevationInFeet}" /> feet</td></tr>
 
-<tr><td class="two">Miles of Trail: <c:out value="${park.milesOfTrail}" /> miles</td></tr>
+<div class="factstable">
+<h1>Fun Park Facts</h1>
 
-<tr><td class="one">Number of Campsites <c:out value="${park.numberOfCampsites}" /> </td></tr>
+<p class="field1">Location:</p> <p class="field2"><c:out value="${park.state}" /></p>
+<br>
+<p class="field1">Park Size:</p> <p class="field2"><c:out value="${park.acreage}" /> acres</p>
+<br>
+<p class="field1">Elevation:</p> <p class="field2"><c:out value="${park.elevationInFeet}" /> feet</p>
+<br>
+<p class="field1">Miles of Trail:</p> <p class="field2"><c:out value="${park.milesOfTrail}" /> miles</p>
+<br>
+<p class="field1">Number of Campsites:</p> <p class="field2"><c:out value="${park.numberOfCampsites}" /> </p>
+<br>
+<p class="field1">Climate: </p> <p class="field2"><c:out value="${park.climate}" /></p>
+<br>
+<p class="field1">Year Founded: </p> <p class="field2"><c:out value="${park.yearFounded}" /></p>
+<br>
+<p class="field1">Annual Visitor Count: </p> <p class="field2"><c:out value="${park.annualVisitorCount}" /></p>
+<br>
+<p class="field1">Animal Species: </p> <p class="field2"><c:out value="${park.numberOfAnimalSpecies}" /></p>
+<br>
+</div>
 
-<tr><td class="two">Climate: <c:out value="${park.climate}" /></td></tr>
 
-<tr><td class="one">Year Founded: <c:out value="${park.yearFounded}" /></td></tr>
+<div class="weather">
+<c:forEach var="weatherList" items="${weatherList }">
 
-<tr><td class="two">Annual Visitor Count: <c:out value="${park.annualVisitorCount}" /></td></tr>
+<c:out value="${weatherList.fiveDayForecastValue}" />
+<c:url var="imgUrl" value="/img/weather/${weatherList.forecast}.png" />
+<img class="weatherimg" src="${imgUrl}" />
+<c:out value="${weatherList.low }" />
+<c:out value="${weatherList.high}" />
 
-<tr><td class="one">Entry Fee: <c:out value="${park.entryFee}" /></td></tr>
 
-<tr><td class="two">Animal Species: <c:out value="${park.numberOfAnimalSpecies}" /> </td></tr>
-</table>
+</c:forEach>
 </div>
 </div>
+</body>
+</body>

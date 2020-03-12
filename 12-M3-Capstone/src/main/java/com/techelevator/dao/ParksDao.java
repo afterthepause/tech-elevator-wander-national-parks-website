@@ -14,7 +14,7 @@ public interface ParksDao {
 	
 	List<Parks> getAllParks();
 	
-	Weather getWeatherByCode(String parkCode);
+	List<Weather> getWeatherByCode(String parkCode);
 	
 	
 }

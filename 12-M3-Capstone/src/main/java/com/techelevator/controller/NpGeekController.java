@@ -37,9 +37,9 @@ public class NpGeekController {
 	@RequestMapping(path="/parkDetail", method=RequestMethod.GET)
 	public String parkDetailPage(@RequestParam String currentParkCode, ModelMap map) {
 		Parks park = parksDao.getByCode(currentParkCode);
-		Weather weather = parksDao.getWeatherByCode(currentParkCode);
+		List<Weather> weatherList = parksDao.getWeatherByCode(currentParkCode);
 		map.addAttribute("park", park);
-		map.addAttribute("weather", weather);
+		map.addAttribute("weatherList", weatherList);
 		return "parkDetail";
 	}
 	
