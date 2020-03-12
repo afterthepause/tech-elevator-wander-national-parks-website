@@ -17,7 +17,7 @@ public class Survey {
 	@NotBlank(message="State Required")
 	public String state;
 	
-	@NotBlank(message="State Required")
+	@NotBlank(message="Activity Level Required")
 	public String activityLevel;
 	
 	
