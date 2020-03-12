@@ -4,7 +4,7 @@
 <c:url var="cssUrl" value="/css/main.css" />
 <link rel="stylesheet" href="${cssUrl}" />
 </head>
-<div class="wrapper">
+
 <div class="header">
 <c:url var="logo" value="/img/wander.png" />
 <img class="logo" src="${logo}"/>
@@ -18,5 +18,5 @@
 <a href = "<c:url value="/survey"/>"><img class="surveybutton" src="${surveybutton }" /></a>
 </div>
 </div>
-</div>
+<hr>
 <br><br>
