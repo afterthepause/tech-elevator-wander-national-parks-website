@@ -3,14 +3,18 @@ package com.techelevator.controller;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttributes;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.techelevator.dao.ParksDao;
 import com.techelevator.dao.SurveyDao;
@@ -44,19 +48,31 @@ public class NpGeekController {
 	}
 	
 	@RequestMapping(path="/survey", method=RequestMethod.GET)
-	public String showSurveyPage() {
+	public String showSurveyPage(ModelMap map) {
+		
+		if(! map.containsAttribute("newSurvey")) {
+			map.addAttribute("newSurvey", new Survey());
+		}
+		
+		
+		
+		
 		return "survey";
 	}
 	@RequestMapping(path="/survey", method=RequestMethod.POST)
-	public String surveyForm(@RequestParam(required=true) String parkCode, @RequestParam(required=true) String email, @RequestParam(required=true) String state, @RequestParam(required=true) String activityLevel ) {
+	public String surveyForm(@Valid @ModelAttribute("newSurvey") Survey newSurvey,
+			BindingResult result,
+			RedirectAttributes attr) {
 		
-		Survey survey = new Survey();
-		survey.setParkCode(parkCode);
-		survey.setEmail(email);
-		survey.setState(state);
-		survey.setActivityLevel(activityLevel);
-		
-		surveyDao.save(survey);
+		if(result.hasErrors() ) {
+			return "survey";
+		}
+//		survey.setParkCode(parkCode);
+//		survey.setEmail(email);
+//		survey.setState(state);
+//		survey.setActivityLevel(activityLevel);
+//		
+//		surveyDao.save(survey);
 		
 		return "redirect:/favoriteParks";
 	}

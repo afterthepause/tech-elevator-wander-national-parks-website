@@ -12,10 +12,10 @@
 <hr>
 <div class="links">
 <c:url var="homebutton" value="/img/homebutton.png" />
-<img class="homebutton" src="${homebutton}" />
+<a href = "<c:url value="/"/>"><img class="homebutton" src="${homebutton}" /></a>
 &emsp;
 <c:url var="surveybutton" value="/img/surveybutton.png" />
-<img class="surveybutton" src="${surveybutton }" />
+<a href = "<c:url value="/survey"/>"><img class="surveybutton" src="${surveybutton }" /></a>
 </div>
 </div>
 <hr>
