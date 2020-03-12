@@ -5,12 +5,50 @@ public class Weather {
 	
 	public String parkCode;
 	public int fiveDayForecastValue;
-	public int low;
-	public int high;
+	public int lowFar;
+	public int highFar;
+	public int lowCel;
+	public int highCel;
 	public String forecast;
+	public String tempMessage = "";
+	public String forcastMessage = "";
 	
 	
+	public String getTempMessage() {
+		return tempMessage;
+	}
 	
+	public void setTempMessage(int high, int low) {
+		if (high >= 75 || low >= 75) {
+			this.tempMessage += "Pack an extra gallon of water... dude.";
+		}
+		if(high <= 20 || low <= 20) {
+			this.tempMessage += "Be careful, it's real cold out... dude. Don't stay out too long.";
+		}
+		if((high - low) >= 20) {
+			this.tempMessage += "Wear breathable layers... dude.";
+		}
+		
+	}
+	
+	public String getForcastMessage() {
+		return forcastMessage;
+	}
+	
+	public void setForcastMessage(String forecast) {
+		if (forecast.equals("snow")) {
+			this.forcastMessage = "Pack snowshoes... dude.";
+		}
+		if (forecast.equals("rain")) {
+			this.forcastMessage = "Pack rain gear and waterproof shoes... dude.";
+		}
+		if (forecast.equals("thunderstorms")) {
+			this.forcastMessage = "Don't go hiking... dude.";
+		}
+		if (forecast.equals("sunny")) {
+			this.forcastMessage = "Pack sunblock... dude.";
+		}
+	}
 	
 	
 	public String getParkCode() {
@@ -25,18 +63,38 @@ public class Weather {
 	public void setFiveDayForecastValue(int fiveDayForecastValue) {
 		this.fiveDayForecastValue = fiveDayForecastValue;
 	}
-	public int getLow() {
-		return low;
+	
+	public int getLowFar() {
+		return lowFar;
 	}
-	public void setLow(int low) {
-		this.low = low;
+	
+	public void setLowFar(int low) {
+		this.lowFar = low;
 	}
-	public int getHigh() {
-		return high;
+	
+	public int getHighFar() {
+		return highFar;
 	}
-	public void setHigh(int high) {
-		this.high = high;
+	
+	public void setHighFar(int high) {
+		this.highFar = high;
 	}
+	
+	public int getLowCel() {
+		return lowCel;
+	}
+	
+	public void setLowCel(int lowCel) {
+		this.lowCel = (int) ((getLowFar()-32) / 1.8 );
+	}
+	
+	public int getHighCel() {
+		return highCel;
+	}
+	public void setHighCel(int highCel) {
+		this.highCel = (int) ((getHighFar()-32) / 1.8 );
+	}
+	
 	public String getForecast() {
 		return forecast;
 	}
