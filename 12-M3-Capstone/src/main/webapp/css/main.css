@@ -304,11 +304,12 @@ div.headingdetail {
 	grid-area: title;
 	justify-self: center;
 }
+
 div.quote {
 	grid-area: quote;
 	justify-self: center;
 	font-style: italic;
-	margin: 0 2%;
+	margin: 0 6.9%;
 }
 div.detailimg {
 	justify-self: center;
@@ -344,13 +345,13 @@ body > div.parkdetail > div.factstable > h1{
 div.detaildesc{
 	grid-area: desc;
 	justify-self: center;
-	margin:0 20px;
+	margin:0 6.9%;
 }
 
 div.weather{
 	grid-area: weather;
 	justify-self: center;
-	margin-left:0 50px;
+	margin:0 6.9%;
 }
 
 
