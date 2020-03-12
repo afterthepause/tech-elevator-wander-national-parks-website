@@ -16,6 +16,7 @@ import com.techelevator.dao.ParksDao;
 import com.techelevator.dao.SurveyDao;
 import com.techelevator.model.Parks;
 import com.techelevator.model.Survey;
+import com.techelevator.model.Weather;
 
 @Controller
 @SessionAttributes()
@@ -36,7 +37,9 @@ public class NpGeekController {
 	@RequestMapping(path="/parkDetail", method=RequestMethod.GET)
 	public String parkDetailPage(@RequestParam String currentParkCode, ModelMap map) {
 		Parks park = parksDao.getByCode(currentParkCode);
+		Weather weather = parksDao.getWeatherByCode(currentParkCode);
 		map.addAttribute("park", park);
+		map.addAttribute("weather", weather);
 		return "parkDetail";
 	}
 	
@@ -56,6 +59,12 @@ public class NpGeekController {
 		surveyDao.save(survey);
 		
 		return "redirect:/favoriteParks";
+	}
+	@RequestMapping(path="/favoriteParks", method=RequestMethod.GET)
+	public String showFavoriteParksPage(HttpServletRequest request) {
+		List<Survey> surveys = surveyDao.getAllSurveys();
+		request.setAttribute("surveys", surveys);
+		return "favoriteParks";
 	}
 	
 }
