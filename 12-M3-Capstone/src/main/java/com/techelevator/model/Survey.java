@@ -4,7 +4,7 @@ public class Survey {
 	
 	
 	
-	public int surveyId;
+	public Long surveyId;
 	public String parkCode;
 	public String email;
 	public String state;
@@ -13,10 +13,10 @@ public class Survey {
 	
 	
 	
-	public int getSurveyId() {
+	public Long getSurveyId() {
 		return surveyId;
 	}
-	public void setSurveyId(int surveyId) {
+	public void setSurveyId(Long surveyId) {
 		this.surveyId = surveyId;
 	}
 	public String getParkCode() {

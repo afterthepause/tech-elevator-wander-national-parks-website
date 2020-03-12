@@ -13,7 +13,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
 import com.techelevator.dao.ParksDao;
+import com.techelevator.dao.SurveyDao;
 import com.techelevator.model.Parks;
+import com.techelevator.model.Survey;
 
 @Controller
 @SessionAttributes()
@@ -21,6 +23,9 @@ public class NpGeekController {
 
 	@Autowired
 	private ParksDao parksDao;
+	
+	@Autowired
+	private SurveyDao surveyDao;
 	
 	@RequestMapping(path="/", method=RequestMethod.GET)
 	public String showHomePage(HttpServletRequest request) {
@@ -35,6 +40,22 @@ public class NpGeekController {
 		return "parkDetail";
 	}
 	
-	
+	@RequestMapping(path="/survey", method=RequestMethod.GET)
+	public String showSurveyPage() {
+		return "survey";
+	}
+	@RequestMapping(path="/survey", method=RequestMethod.POST)
+	public String surveyForm(@RequestParam(required=true) String parkCode, @RequestParam(required=true) String email, @RequestParam(required=true) String state, @RequestParam(required=true) String activityLevel ) {
+		
+		Survey survey = new Survey();
+		survey.setParkCode(parkCode);
+		survey.setEmail(email);
+		survey.setState(state);
+		survey.setActivityLevel(activityLevel);
+		
+		surveyDao.save(survey);
+		
+		return "redirect:/favoriteParks";
+	}
 	
 }
