@@ -4,7 +4,7 @@
 <c:import url="/WEB-INF/jsp/common/header.jsp">
 <c:param name="Wander: Your National Parks Resource" value="homepage" />
 </c:import>
-<div id="wrapper">
+
 
 <div id="homepage">
 

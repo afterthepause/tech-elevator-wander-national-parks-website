@@ -1,63 +1,106 @@
 
+del {
+text-decoration: line-through;
+}
+
+body.parklisting{
+	background-color: #362c26;
+	width:80%;
+	margin-left:auto;
+	margin-right:auto;
+}
+
+/* change border colour to suit your needs */
+hr {
+display:block;
+height:0px;
+border:0;
+border-top:2px solid #29473e;
+margin:0;
+padding:0;
+}
+
+
+html{
+	background-color: #29473e;
+}
 div.header {
 	background-color: #362c26;
 	font-color: #b98700;
 	font-size: 1.5rem;
 	color: #b98700;
 	text-align:center;
+	width: 100%;
+	height: auto;
+	margin-left:auto;
+	margin-right: auto;
+	margin-bottom: 0;
+	padding-bottom:0;
+	
 }
 img.logo{
 	grid-area: header;
 	width: 70%;
 	justify:center;
+	padding-bottom: 20px;
 }
 
 img.surveybutton {
 	max-width:11%;
 	height:auto;
+	padding-bottom:3px;
+	padding-top:8px;
 }
 img.homebutton {
 	max-width:10%;
 	height:auto;
+	padding-bottom:3px;
+	padding-top:8px;
 }
 
 div#homepage{
+	padding-top: 0;
+	margin-top:0;
 	background-color: #362c26;
 	display:grid;
-	grid-template-columns: .25fr 1.25fr 2fr .25fr;
+	grid-template-columns: 1.25fr 2fr ;
 	grid-gap:10px;
 	grid-template-rows: auto;
-	
+	width: 100%;
+	margin-left:auto;
+	margin-right: auto;
+	padding-top:0;
+	padding-bottom: 5%;
 	grid-template-areas:
-	". cvnptitle cvnptitle ."
-	". cvnpimg cvnpdesc ."
-	". . . ."
-	". enptitle enptitle ."
-	". enpimg enpdesc ."
-	". . . ."
-	". gcnptitle gcnptitle ."
-	". gcnpimg gcnpdesc ."
-	". . . ."
-	". gnptitle gnptitle ."
-	". gnpimg gnpdesc ."
-	". . . ."
-	". gsmnptitle gsmnptitle ."
-	". gsmnpimg gsmnpdesc ."
-	". . . ."
-	". gtnptitle gtnptitle ."
-	". gtnpimg gtnpdesc ."
-	". . . ."
-	". mrnptitle mrnptitle ."
-	". mrnpimg mrnpdesc ."
-	". . . ."
-	". rmnptitle rmnptitle ."
-	". rmnpimg rmnpdesc ."
-	". . . ."
-	". ynptitle ynptitle ."
-	". ynpimg ynpdesc ."
-	". . . ."
-	". ynp2title ynp2title ."
-	". ynp2img ynp2desc .";	
+	" cvnptitle cvnptitle "
+	" cvnpimg cvnpdesc "
+	
+	" enptitle enptitle "
+	" enpimg enpdesc "
+	
+	" gcnptitle gcnptitle "
+	" gcnpimg gcnpdesc "
+	
+	" gnptitle gnptitle "
+	" gnpimg gnpdesc "
+	
+	" gsmnptitle gsmnptitle "
+	" gsmnpimg gsmnpdesc "
+	
+	" gtnptitle gtnptitle "
+	" gtnpimg gtnpdesc "
+	
+	" mrnptitle mrnptitle "
+	" mrnpimg mrnpdesc "
+	
+	" rmnptitle rmnptitle "
+	" rmnpimg rmnpdesc "
+	
+	" ynptitle ynptitle "
+	" ynpimg ynpdesc "
+	
+	" ynp2title ynp2title "
+	" ynp2img ynp2desc ";	
 }
 
 a > img  {
@@ -65,20 +108,24 @@ a > img  {
 	height: auto;
 	border: 2px solid #b98700;
 	display: block;
-	margin-left:auto;
+	margin-left:10px;
 	margin-right:auto;
 }
 h1{
 	font-family: "Amatic SC", cursive;
-	font-size: 7vw;
+	font-size: 6.5vw;
 	font-weight: bold;
 	padding:0;
 	margin:0;
+	margin-left:10px;
 	color: #b98700;
+}
+h1.pagedetailh1 {
+	align-text:center;
 }
 p{
 	font-family:"Open Sans Condensed", sans-serif;
-	font-size: 1.8vw;
+	font-size: 1.6vw;
 	text-align: left;
 	color: white;
 	padding:0;
