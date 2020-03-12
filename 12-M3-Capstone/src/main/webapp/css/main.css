@@ -1,0 +1,216 @@
+
+div.header {
+	background-color: #362c26;
+	font-color: #b98700;
+	font-size: 1.5rem;
+	color: #b98700;
+	text-align:center;
+}
+img.logo{
+	grid-area: header;
+	width: 70%;
+	justify:center;
+}
+
+img.surveybutton {
+	max-width:11%;
+	height:auto;
+}
+img.homebutton {
+	max-width:10%;
+	height:auto;
+}
+
+div#homepage{
+	background-color: #362c26;
+	display:grid;
+	grid-template-columns: .25fr 1.25fr 2fr .25fr;
+	grid-gap:10px;
+	grid-template-rows: auto;
+	
+	grid-template-areas:
+	". cvnptitle cvnptitle ."
+	". cvnpimg cvnpdesc ."
+	". . . ."
+	". enptitle enptitle ."
+	". enpimg enpdesc ."
+	". . . ."
+	". gcnptitle gcnptitle ."
+	". gcnpimg gcnpdesc ."
+	". . . ."
+	". gnptitle gnptitle ."
+	". gnpimg gnpdesc ."
+	". . . ."
+	". gsmnptitle gsmnptitle ."
+	". gsmnpimg gsmnpdesc ."
+	". . . ."
+	". gtnptitle gtnptitle ."
+	". gtnpimg gtnpdesc ."
+	". . . ."
+	". mrnptitle mrnptitle ."
+	". mrnpimg mrnpdesc ."
+	". . . ."
+	". rmnptitle rmnptitle ."
+	". rmnpimg rmnpdesc ."
+	". . . ."
+	". ynptitle ynptitle ."
+	". ynpimg ynpdesc ."
+	". . . ."
+	". ynp2title ynp2title ."
+	". ynp2img ynp2desc .";	
+}
+
+a > img  {
+	max-width: 100%;
+	height: auto;
+	border: 2px solid #b98700;
+	display: block;
+	margin-left:auto;
+	margin-right:auto;
+}
+h1{
+	font-family: "Amatic SC", cursive;
+	font-size: 7vw;
+	font-weight: bold;
+	padding:0;
+	margin:0;
+	color: #b98700;
+}
+p{
+	font-family:"Open Sans Condensed", sans-serif;
+	font-size: 1.8vw;
+	text-align: left;
+	color: white;
+	padding:0;
+	margin:0;
+}
+h1.cvnpname {
+	grid-area: cvnptitle;
+}
+
+a.cvnpimg {
+	grid-area: cvnpimg;
+}
+
+p.cvnpdescription {
+	grid-area: cvnpdesc;
+	padding: 0px 25px;
+}
+
+h1.enpname {
+	grid-area: enptitle;
+}
+
+a.enpimg {
+	grid-area: enpimg;
+}
+
+p.enpdescription {
+	grid-area: enpdesc;
+	padding: 0px 25px;
+	
+}
+
+h1.gcnpname {
+	grid-area: gcnptitle;
+}
+
+a.gcnpimg {
+	grid-area: gcnpimg;
+}
+
+p.gcnpdescription {
+	grid-area: gcnpdesc;
+	padding: 0px 25px;
+}
+
+h1.gnpname {
+	grid-area: gnptitle;
+}
+
+a.gnpimg {
+	grid-area: gnpimg;
+}
+
+p.gnpdescription {
+	grid-area: gnpdesc;
+	padding: 0px 25px;
+}
+
+h1.gsmnpname {
+	grid-area: gsmnptitle;
+}
+
+a.gsmnpimg {
+	grid-area: gsmnpimg;
+}
+
+p.gsmnpdescription{
+	grid-area: gsmnpdesc;
+	padding: 0px 25px;
+}
+
+h1.gtnpname {
+	grid-area: gtnptitle;
+}
+
+a.gtnpimg {
+	grid-area: gtnpimg;
+}
+
+p.gtnpdescription {
+	grid-area: gtnpdesc;
+	padding: 0px 25px;
+}
+
+h1.mrnpname {
+	grid-area: mrnptitle;
+}
+
+a.mrnpimg {
+	grid-area: mrnpimg;
+}
+
+p.mrnpdescription {
+	grid-area: mrnpdesc;
+	padding: 0px 25px;
+}
+
+h1.rmnpname {
+	grid-area: rmnptitle;
+}
+
+a.rmnpimg {
+	grid-area: rmnpimg;
+}
+
+p.rmnpdescription {
+	grid-area: rmnpdesc;
+	padding: 0px 25px;
+}
+
+h1.ynpname {
+	grid-area: ynptitle;
+}
+
+a.YNPimg {
+	grid-area: ynpimg;
+}
+
+p.ynpdescription {
+	grid-area: ynpdesc;
+	padding: 0px 25px;
+}
+
+h1.ynp2name {
+	grid-area: ynp2title;
+}
+
+a.ynp2img {
+	grid-area: ynp2img;
+}
+
+p.ynp2description {
+	grid-area: ynp2desc;
+	padding: 0px 25px;
+}

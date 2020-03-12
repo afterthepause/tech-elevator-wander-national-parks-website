@@ -32,7 +32,7 @@ public class JdbcParksDao implements ParksDao {
 	//pull in park by Park Code
 	@Override
 	public Parks getByCode(String parkCode) {
-		SqlRowSet result = jdbcTemplate.queryForRowSet(SELECT_PARKS_SQL + " Where code = ?", parkCode);
+		SqlRowSet result = jdbcTemplate.queryForRowSet(SELECT_PARKS_SQL + " Where parkcode = ?", parkCode);
 		if(result.next()) {
 			return mapRowSetToPark(result);
 		}
