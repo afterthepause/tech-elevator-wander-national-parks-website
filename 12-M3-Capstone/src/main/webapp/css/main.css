@@ -18,7 +18,7 @@ padding:0;
 div.buttons {
 	display: flex;
   flex-wrap: nowrap;
-  flex-flow: row wrap;
+
   justify-content: center;
   margin:10px 0;
 }
@@ -284,7 +284,7 @@ div.parkdetail{
 	margin-top:0;
 	background-color: #362c26;
 	display:grid;
-	grid-template-columns: 1.25fr 2fr ;
+	grid-template-columns: 1.5fr 1fr ;
 	grid-gap:10px;
 	grid-template-rows: auto;
 	width: 100%;
@@ -313,6 +313,7 @@ div.quote {
 div.detailimg {
 	justify-self: center;
 }
+
 div.detailimg > img{
 	grid-area:img;
 	
@@ -337,7 +338,7 @@ body > div.parkdetail > div.factstable > h1{
 	font-size: 4vw;
 	font-weight: bold;
 	color: #b98700;
-	margin: 0px 0px 0px 22% ;
+	margin: 0 5%; 
 }
 
 div.detaildesc{
@@ -357,7 +358,7 @@ body > div.parkdetail > div.factstable > p.field1{
 	font-weight: bolder;
 	color: #b98700;
 	margin:0;
-	margin: 0px 0px 0px 25% ;
+	margin: 0 5%;  ;
 }
 
 
@@ -365,7 +366,7 @@ body > div.parkdetail > div.factstable > p.field1{
 body > div.parkdetail > div.factstable > p.field2{
 	font-weight: bold;
 	color: #FFFFFF;
-	margin:0;
+	margin: 0;
 	
 }
 
