@@ -50,13 +50,13 @@ public class JdbcSurveyDao implements SurveyDao{
 	
 	
 	private Long getNextId() {
-		String sqlSelectNextId = "SELECT NEXTVAL('seq_review_id')";
+		String sqlSelectNextId = "SELECT NEXTVAL('seq_surveyid')";
 		SqlRowSet results = jdbcTemplate.queryForRowSet(sqlSelectNextId);
 		Long id = null;
 		if (results.next()) {
 			id = results.getLong(1);
 		} else {
-			throw new RuntimeException("Something strange happened, unable to select next forum post id from sequence");
+			throw new RuntimeException("Something strange happened, unable to select next survey id from sequence");
 		}
 		return id;
 	}
