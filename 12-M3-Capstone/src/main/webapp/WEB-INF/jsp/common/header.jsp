@@ -8,15 +8,16 @@
 <div class="header">
 <c:url var="logo" value="/img/wander.png" />
 <img class="logo" src="${logo}"/>
-<br>
+
+</div>
 <hr>
-<div class="links">
+<div class="buttons">
 <c:url var="homebutton" value="/img/homebutton.png" />
-<a href = "<c:url value="/"/>"><img class="homebutton" src="${homebutton}" /></a>
+<a class="home" href = "<c:url value="/"/>"><img class="homebutton" src="${homebutton}" /></a>
 &emsp;
 <c:url var="surveybutton" value="/img/surveybutton.png" />
-<a href = "<c:url value="/survey"/>"><img class="surveybutton" src="${surveybutton }" /></a>
+<a class="survey" href = "<c:url value="/survey"/>"><img class="surveybutton" src="${surveybutton }" /></a>
 </div>
-</div>
+
 <hr>
 <br><br>
