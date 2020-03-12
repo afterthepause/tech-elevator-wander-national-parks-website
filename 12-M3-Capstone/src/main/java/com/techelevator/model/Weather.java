@@ -11,7 +11,7 @@ public class Weather {
 	public int highCel;
 	public String forecast;
 	public String tempMessage = "";
-	public String forcastMessage = "";
+	public String forecastMessage = "";
 	
 	
 	public String getTempMessage() {
@@ -31,22 +31,22 @@ public class Weather {
 		
 	}
 	
-	public String getForcastMessage() {
-		return forcastMessage;
+	public String getForecastMessage() {
+		return forecastMessage;
 	}
 	
-	public void setForcastMessage(String forecast) {
+	public void setForecastMessage(String forecast) {
 		if (forecast.equals("snow")) {
-			this.forcastMessage = "Pack snowshoes... dude.";
+			this.forecastMessage = "Pack snowshoes... dude.";
 		}
 		if (forecast.equals("rain")) {
-			this.forcastMessage = "Pack rain gear and waterproof shoes... dude.";
+			this.forecastMessage = "Pack rain gear and waterproof shoes... dude.";
 		}
 		if (forecast.equals("thunderstorms")) {
-			this.forcastMessage = "Don't go hiking... dude.";
+			this.forecastMessage = "Don't go hiking... dude.";
 		}
 		if (forecast.equals("sunny")) {
-			this.forcastMessage = "Pack sunblock... dude.";
+			this.forecastMessage = "Pack sunblock... dude.";
 		}
 	}
 	

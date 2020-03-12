@@ -54,18 +54,80 @@
 <br>
 </div>
 
-
+<div id="weatherHead">5 Day Weather Forecast</div>
+			<c:url var="formActionUrl" value="/parkDetail" />
+			<div class="row justify-content-center"><div class="col- weather"><strong>Select Preferred Temperature Unit:</strong><br><form
+					action="${formActionUrl}?parkCode=${park.parkCode}" method="post">
+					<label for="tempUnit"><input name="tempUnit" type="radio"
+						value="F">Fahrenheit</label> <label for="tempUnit"><input
+						name="tempUnit" type="radio" value="C">Celcius</label> <input
+						type="submit" class="btn btn-primary">
+				</form></div></div>
 <div class="weather">
 <c:forEach var="weatherList" items="${weatherList }">
 
 <c:out value="${weatherList.fiveDayForecastValue}" />
 <c:url var="imgUrl" value="/img/weather/${weatherList.forecast}.png" />
 <img class="weatherimg" src="${imgUrl}" />
-<c:out value="${weatherList.low }" />
-<c:out value="${weatherList.high}" />
-
-
+<c:out value="${weatherList.lowFar }" />
+<c:out value="${weatherList.highFar}" />
 </c:forEach>
+
+<div class="row justify-content-center">
+			<div class="col- weather ">
+				Today
+				<div id="todayImg">
+					<c:if test="${tempUnit == 'F'}">
+						<c:set var="low" value="${weatherList[0].lowFar}" />
+						<c:set var="high" value="${weatherList[0].highFar}" />
+					</c:if>
+					<c:if test="${tempUnit == 'C'}">
+						<c:set var="low" value="${weatherList[0].lowCel}" />
+						<c:set var="high" value="${weatherList[0].highCel}" />
+					</c:if>
+					<c:url var="todayWeatherUrl" value="/img/weather/${weatherList[0].forecast}.png" />
+					<img src="${todayWeatherUrl}" alt="${weatherList[0].forecast}" /><br>
+					<c:out value="${weatherList[0].forecastMessage}"/><br>
+					Low:
+					<c:out value="${low}" />&#xb0 <c:out value="${tempUnit}"/>
+					<br> High:
+					<c:out value="${high}" />&#xb0 <c:out value="${tempUnit}"/>
+					<br>
+					<c:out value="${weatherList[0].tempMessage}" />
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<c:forEach begin="1" end="4" items="${weatherList}" var="weather">
+				<c:if test="${tempUnit == 'f'}">
+					<c:set var="low" value="${weatherList.lowFar}" />
+					<c:set var="high" value="${weatherList.highFar}" />
+				</c:if>
+				<c:if test="${tempUnit == 'c'}">
+					<c:set var="low" value="${weatherList.lowCel}" />
+					<c:set var="high" value="${weatherList.highCel}" />
+				</c:if>
+				<div class="col-sm weather">
+					Day
+					<c:out value="${weatherList.fiveDayForecastValue}" />
+					<div class="weatherContent">
+						<c:url var="imgUrl"
+							value="/img/weather/${weatherList.forecast}.png" />
+						<img src="${imgUrl}" alt="${weather.forecast}" /><br> 
+						<c:out value="${weather.forecastMessage}"/><br>
+						Low:
+						<c:out value="${low}" />&#xb0 <c:out value="${tempUnit}"/>
+						<br> High:
+						<c:out value="${high}" />&#xb0 <c:out value="${tempUnit}"/>
+						<br>
+						<c:out value="${weather.tempMessage}" />
+					</div>
+				</div>
+			</c:forEach>
+
+
+
+
 </div>
 </div>
 </body>
