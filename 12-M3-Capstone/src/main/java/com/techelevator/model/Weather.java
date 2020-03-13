@@ -5,10 +5,9 @@ public class Weather {
 	
 	public String parkCode;
 	public int fiveDayForecastValue;
-	public int lowFar;
-	public int highFar;
-	public int lowCel;
-	public int highCel;
+	public Integer low;
+	public Integer high;
+
 	public String forecast;
 	public String tempMessage = "";
 	public String forecastMessage = "";
@@ -18,7 +17,7 @@ public class Weather {
 		return tempMessage;
 	}
 	
-	public void setTempMessage(int high, int low) {
+	public void setTempMessage(Integer high, Integer low) {
 		if (high >= 75 || low >= 75) {
 			this.tempMessage += "Pack an extra gallon of water... dude.";
 		}
@@ -64,40 +63,28 @@ public class Weather {
 		this.fiveDayForecastValue = fiveDayForecastValue;
 	}
 	
-	public int getLowFar() {
-		return lowFar;
+	public Integer getLow() {
+		return low;
 	}
 	
-	public void setLowFar(int low) {
-		this.lowFar = low;
+	public void setLow(Integer low) {
+		this.low = low;
 	}
 	
-	public int getHighFar() {
-		return highFar;
+	public Integer getHigh() {
+		return high;
 	}
 	
-	public void setHighFar(int high) {
-		this.highFar = high;
+	public void setHigh(Integer high) {
+		this.high = high;
 	}
 	
-	public int getLowCel() {
-		return lowCel;
-	}
-	
-	public void setLowCel(int lowCel) {
-		this.lowCel = (int) ((getLowFar()-32) / 1.8 );
-	}
-	
-	public int getHighCel() {
-		return highCel;
-	}
-	public void setHighCel(int highCel) {
-		this.highCel = (int) ((getHighFar()-32) / 1.8 );
-	}
+
 	
 	public String getForecast() {
 		return forecast;
 	}
+	
 	public void setForecast(String forecast) {
 		this.forecast = forecast;
 	}

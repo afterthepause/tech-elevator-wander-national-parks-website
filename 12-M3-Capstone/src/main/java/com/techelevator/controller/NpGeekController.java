@@ -33,14 +33,13 @@ public class NpGeekController {
 	@Autowired
 	private SurveyDao surveyDao;
 	
-	
 	@RequestMapping(path="/", method=RequestMethod.GET)
 	public String showHomePage(ModelMap map) {
 		List<Parks> parks = parksDao.getAllParks();
 		map.addAttribute("parks", parks);
 		return "homePage";
 	}
-	
+
 	
 	@RequestMapping(path="/parkDetail", method=RequestMethod.GET)
 	public String parkDetailPage(@RequestParam String currentParkCode, ModelMap map) {
@@ -51,15 +50,24 @@ public class NpGeekController {
 		return "parkDetail";
 	}
 	
+	@RequestMapping(path={"/changeWeather"}, method=RequestMethod.POST)
+	public String chooseTempScale(HttpSession parks, @RequestParam Boolean isCelsius, @RequestParam String currentParkCode) {
+		
+		parks.setAttribute("isCelsius", isCelsius);
+		
+		return "redirect:/parkDetail?currentParkCode=" + currentParkCode;
+	}
+	
+	
 	
 	@RequestMapping(path="/survey", method=RequestMethod.GET)
 	public String showSurveyPage(ModelMap map) {
+		
 		if(! map.containsAttribute("newSurvey")) {
 			map.addAttribute("newSurvey", new Survey());
 		}
 		return "survey";
 	}
-	
 	
 	@RequestMapping(path="/survey", method=RequestMethod.POST)
 	public String surveyForm(@Valid @ModelAttribute("newSurvey") Survey newSurvey,
@@ -68,45 +76,17 @@ public class NpGeekController {
 		if(result.hasErrors() ) {
 			return "survey";
 		}
+		
 		surveyDao.save(newSurvey);
 		attr.addFlashAttribute("survey",newSurvey);
+		
 		return "redirect:/favoriteParks";
 	}
-	
-	
 	@RequestMapping(path="/favoriteParks", method=RequestMethod.GET)
 	public String showFavoriteParksPage(HttpServletRequest request) {
 		List<Survey> surveys = surveyDao.getAllSurveys();
 		request.setAttribute("surveys", surveys);
 		return "favoriteParks";
 	}
-	
-	
-	@RequestMapping(path="/detail", method=RequestMethod.GET)
-	public String getParkDetail(@RequestParam String parkCode, ModelMap map, ModelMap weatherMap) {
-		map.put("park", parksDao.getByCode(parkCode));
-		weatherMap.put("weatherInfo", parksDao.getWeatherByCode(parkCode));
-		return "parkDetail";
-	}
-	
-	
-	@RequestMapping(path ="/detail" , method = RequestMethod.POST)
-	public String setUserTemp(String tempUnit, @RequestParam String parkCode, HttpSession parks) {
-		parks.setAttribute("tempUnit", tempUnit);
-		return "redirect:/parkDetail";
-	}
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
 	
 }

@@ -1,5 +1,8 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+
+
 <c:import url="/WEB-INF/jsp/common/header.jsp">
 <c:param name="Wander: Your National Parks Resource" value="homepage" />
 </c:import>
@@ -55,41 +58,75 @@
 </div>
 
 
-<c:url var = "parkDetailURL" value = "/parkDetail">
-<c:param name = "currentParkCode" value = "${park.parkCode}"/>
-</c:url>
 
+<c:url var="actionUrl" value="/changeWeather">
+<c:param name="currentParkCode" value="${param.currentParkCode}"/>
+</c:url>
 <div class="weatherSelector">
 	5 Day Weather Forecast:<br>
 	View Weather in:
 	<br>
-	<c:url var="tempButton" value="${parkDetailURL}" />
-	<form action="${parkDetailURL}?parkCode=${park.parkCode}"  >
-	<label for="tempUnit"><input name="tempUnit" type="radio" value="F">Fahrenheit</label> 
-	<label for="tempUnit"><input name="tempUnit" type="radio" value="C">Celcius</label> 
-	<input type="submit" class="btn btn-primary">
+	<form method="POST" action="${actionUrl}">
+		<select name="isCelsius">
+			<option value="false" ${isCelsius ? '' : 'selected'}>Fahrenheit</option>
+			<option value="true" ${isCelsius ? 'selected' : ''}>Celsius</option>
+		</select>
+		<input type="submit" name="submit" class="btn btn-success" value="Go"/>
 	</form>
 </div>
 
-<div class="weatherContainer">
+<div class="weatherWrapper">
 
-	<div class="todaysWeather">
-	<c:out value="${weatherList[0].fiveDayForecastValue}" />
-	<c:url var="imgUrl" value="/img/weather/${weatherList[0].forecast}.png" />
-	<img class="weatherImg" src="${imgUrl}" />
-	<c:out value="${weatherList[0].forecastMessage}" />
-	H: <c:out value="${weatherList[0].highFar }" /> / L: <c:out value="${weatherList[0].lowFar}" />
-	<c:out value="${weatherList[0].tempMessage}" />
+	<div class="todayWeather">
+		<c:set var="weather" value="${weatherList[0]}" />
+		<c:url var="weatherImg" value="/img/weather/${weather.forecast}.png" />
+		<img src="${weatherImg} " />
+		<c:out value="${weather.forecast }" />
+		<c:choose>
+		<c:when test="${isCelsius}">
+		H: <fmt:formatNumber type="Number" value= "${(weather.high - 32) / 1.8}" maxFractionDigits="0"/>
+		| L: <fmt:formatNumber type="Number" value="${(weather.low - 32) / 1.8}" maxFractionDigits="0"/>
+		<c:set var="tempScale" value="°C" />
+		</c:when>
+		<c:otherwise>
+		H: <c:out value="${weather.high}" />
+		| L:<c:out value="${weather.low}" />
+		<c:set var="tempScale" value="°F" />
+		</c:otherwise>
+		</c:choose> 
+		<br>
+		<c:out value="${weather.tempMessage }" />
+		<br>
+		<c:out value="${weather.forecastMessage}" />
 	</div>
 
 	<div class="extendedWeather">
-	<c:forEach begin="1" end="4" var="weatherList" items="${weatherList }">
-	<c:out value="${weatherList.fiveDayForecastValue}" />
-	<c:url var="imgUrl" value="/img/weather/${weatherList.forecast}.png" />
-	<img class="weatherImgEx" src="${imgUrl}" />
-	H: <c:out value="${weatherList.highFar }" /> / L: <c:out value="${weatherList.lowFar}" />
-	</c:forEach>
+		<c:forEach varStatus="loop" var="weather" items="${weatherList}" begin="1">
+		<c:set var="weather" value="${weatherList[loop.index]}" />
+		<c:url var="weatherImg" value="/img/weather/${weather.forecast}.png" />
+		<img src="${weatherImg} " />
+		<c:out value="${weather.forecast }" />
+		<c:choose>
+		<c:when test="${isCelsius}">
+			 H: <fmt:formatNumber type="Number" value= "${(weather.high - 32) / 1.8}" maxFractionDigits="0"/>
+			 | L: <fmt:formatNumber type="Number" value="${(weather.low - 32) / 1.8}" maxFractionDigits="0"/>
+			<c:set var="tempScale" value="°C" />
+		</c:when>
+		<c:otherwise>
+			 H: <c:out value="${weather.high}" />
+			 | L:<c:out value="${weather.low}" />
+			<c:set var="tempScale" value="°F" />
+		</c:otherwise>
+		</c:choose> 
+		<br>
+		<c:out value="${weather.tempMessage }" />
+		<br>
+		<c:out value="${weather.forecastMessage}" />
+		</c:forEach>
 	</div>
-</div>
-</body>
+</div>	
+
+</div>  
+
+
 </body>
