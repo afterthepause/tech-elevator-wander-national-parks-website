@@ -1,6 +1,9 @@
 package com.techelevator.controller;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -75,18 +78,13 @@ public class NpGeekController {
 	
 	
 	@RequestMapping(path="/favoriteParks", method=RequestMethod.GET)
-<<<<<<< HEAD
 	public String showFavoriteParksPage(ModelMap map) {
 		Map<Parks, Integer> parkMap = new HashMap<Parks, Integer>();
 		for(Entry entry : surveyDao.getCountOfSurveysPerParkCode().entrySet()){
 			parkMap.put( parksDao.getByCode( (String) entry.getKey() ), ( (Integer) entry.getValue() ) );
 		}
 		map.addAttribute("surveyCount", parkMap);
-=======
-	public String showFavoriteParksPage(HttpServletRequest request) {
-		List<Survey> surveys = surveyDao.getAllSurveys();
-		request.setAttribute("surveys", surveys);
->>>>>>> 604e2dd0d55613160a9dcbd7ae17ad1339e860de
+
 		return "favoriteParks";
 	}
 	
