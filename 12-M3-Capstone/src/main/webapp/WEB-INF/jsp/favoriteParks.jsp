@@ -5,3 +5,10 @@
 <c:param name="Wander: Your National Parks Resource" value="favoriteParks" />
 </c:import>
 
+
+
+<c:forEach items="${surveyCount}" var="survey">
+
+	<c:out value="${survey}"/>
+
+</c:forEach>

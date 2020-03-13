@@ -78,9 +78,9 @@ public class NpGeekController {
 	public String showFavoriteParksPage(ModelMap map) {
 		Map<Parks, Integer> parkMap = new HashMap<Parks, Integer>();
 		for(Entry entry : surveyDao.getCountOfSurveysPerParkCode().entrySet()){
-			parkMap.put(parksDao.getByCode((String) entry.getKey()), (Integer) entry.getValue());
+			parkMap.put( parksDao.getByCode( (String) entry.getKey() ), ( (Integer) entry.getValue() ) );
 		}
-		map.addAttribute("surveys", parkMap);
+		map.addAttribute("surveyCount", parkMap);
 		return "favoriteParks";
 	}
 	
