@@ -1,11 +1,9 @@
 package com.techelevator.controller;
 
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
-import java.util.Map.Entry;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -35,12 +33,15 @@ public class NpGeekController {
 	@Autowired
 	private SurveyDao surveyDao;
 	
+	
 	@RequestMapping(path="/", method=RequestMethod.GET)
 	public String showHomePage(ModelMap map) {
 		List<Parks> parks = parksDao.getAllParks();
 		map.addAttribute("parks", parks);
 		return "homePage";
 	}
+	
+	
 	@RequestMapping(path="/parkDetail", method=RequestMethod.GET)
 	public String parkDetailPage(@RequestParam String currentParkCode, ModelMap map) {
 		Parks park = parksDao.getByCode(currentParkCode);
@@ -50,38 +51,71 @@ public class NpGeekController {
 		return "parkDetail";
 	}
 	
+	
 	@RequestMapping(path="/survey", method=RequestMethod.GET)
 	public String showSurveyPage(ModelMap map) {
-		
 		if(! map.containsAttribute("newSurvey")) {
 			map.addAttribute("newSurvey", new Survey());
 		}
-		
-		
 		return "survey";
 	}
+	
+	
 	@RequestMapping(path="/survey", method=RequestMethod.POST)
 	public String surveyForm(@Valid @ModelAttribute("newSurvey") Survey newSurvey,
 			BindingResult result,
 			RedirectAttributes attr) {
-		
 		if(result.hasErrors() ) {
 			return "survey";
 		}
-		
 		surveyDao.save(newSurvey);
 		attr.addFlashAttribute("survey",newSurvey);
-		
 		return "redirect:/favoriteParks";
 	}
+	
+	
 	@RequestMapping(path="/favoriteParks", method=RequestMethod.GET)
+<<<<<<< HEAD
 	public String showFavoriteParksPage(ModelMap map) {
 		Map<Parks, Integer> parkMap = new HashMap<Parks, Integer>();
 		for(Entry entry : surveyDao.getCountOfSurveysPerParkCode().entrySet()){
 			parkMap.put( parksDao.getByCode( (String) entry.getKey() ), ( (Integer) entry.getValue() ) );
 		}
 		map.addAttribute("surveyCount", parkMap);
+=======
+	public String showFavoriteParksPage(HttpServletRequest request) {
+		List<Survey> surveys = surveyDao.getAllSurveys();
+		request.setAttribute("surveys", surveys);
+>>>>>>> 604e2dd0d55613160a9dcbd7ae17ad1339e860de
 		return "favoriteParks";
 	}
+	
+	
+	@RequestMapping(path="/detail", method=RequestMethod.GET)
+	public String getParkDetail(@RequestParam String parkCode, ModelMap map, ModelMap weatherMap) {
+		map.put("park", parksDao.getByCode(parkCode));
+		weatherMap.put("weatherInfo", parksDao.getWeatherByCode(parkCode));
+		return "parkDetail";
+	}
+	
+	
+	@RequestMapping(path ="/detail" , method = RequestMethod.POST)
+	public String setUserTemp(String tempUnit, @RequestParam String parkCode, HttpSession parks) {
+		parks.setAttribute("tempUnit", tempUnit);
+		return "redirect:/parkDetail";
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	
 }

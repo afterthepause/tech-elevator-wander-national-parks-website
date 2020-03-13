@@ -55,21 +55,41 @@
 </div>
 
 
-<div class="weather">
-<c:forEach var="weatherList" items="${weatherList }">
+<c:url var = "parkDetailURL" value = "/parkDetail">
+<c:param name = "currentParkCode" value = "${park.parkCode}"/>
+</c:url>
 
-<c:out value="${weatherList.fiveDayForecastValue}" />
-<c:url var="imgUrl" value="/img/weather/${weatherList.forecast}.png" />
-<img class="weatherimg" src="${imgUrl}" />
-<c:out value="${weatherList.lowFar }" />
-<c:out value="${weatherList.highFar}" />
-</c:forEach>
-
-
-
-
-
+<div class="weatherSelector">
+	5 Day Weather Forecast:<br>
+	View Weather in:
+	<br>
+	<c:url var="tempButton" value="${parkDetailURL}" />
+	<form action="${parkDetailURL}?parkCode=${park.parkCode}"  >
+	<label for="tempUnit"><input name="tempUnit" type="radio" value="F">Fahrenheit</label> 
+	<label for="tempUnit"><input name="tempUnit" type="radio" value="C">Celcius</label> 
+	<input type="submit" class="btn btn-primary">
+	</form>
 </div>
+
+<div class="weatherContainer">
+
+	<div class="todaysWeather">
+	<c:out value="${weatherList[0].fiveDayForecastValue}" />
+	<c:url var="imgUrl" value="/img/weather/${weatherList[0].forecast}.png" />
+	<img class="weatherImg" src="${imgUrl}" />
+	<c:out value="${weatherList[0].forecastMessage}" />
+	H: <c:out value="${weatherList[0].highFar }" /> / L: <c:out value="${weatherList[0].lowFar}" />
+	<c:out value="${weatherList[0].tempMessage}" />
+	</div>
+
+	<div class="extendedWeather">
+	<c:forEach begin="1" end="4" var="weatherList" items="${weatherList }">
+	<c:out value="${weatherList.fiveDayForecastValue}" />
+	<c:url var="imgUrl" value="/img/weather/${weatherList.forecast}.png" />
+	<img class="weatherImgEx" src="${imgUrl}" />
+	H: <c:out value="${weatherList.highFar }" /> / L: <c:out value="${weatherList.lowFar}" />
+	</c:forEach>
+	</div>
 </div>
 </body>
 </body>

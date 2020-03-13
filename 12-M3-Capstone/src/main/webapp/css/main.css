@@ -317,7 +317,6 @@ div.detailimg {
 
 div.detailimg > img{
 	grid-area:img;
-	
 	margin-left:20px;
 	border: 2px solid #b98700;
 	width:100%;
