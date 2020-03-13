@@ -3,9 +3,7 @@ package com.techelevator.dao;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.junit.Assert;
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.*;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.datasource.SingleConnectionDataSource;
 
@@ -25,9 +23,6 @@ public class JdbcParksDaoTest extends DAOIntegrationTest{
 		datasource = (SingleConnectionDataSource) super.getDataSource();
 		parksDao = new JdbcParksDao(datasource);
 		jdbcTemplate = new JdbcTemplate(datasource);
-		
-		
-		//truncateParkAndWeather();
 	}
 	
 	@Test
@@ -91,32 +86,22 @@ public class JdbcParksDaoTest extends DAOIntegrationTest{
 		Assert.assertEquals(1, weatherList.size());
 	}
 	
-	/*
-	 * @Test
-	public void get_all_venues() {
-
-		String sqlInsertVenue = "INSERT INTO venue (id, name, city_id, description) "
-				+ "VALUES (25, ?, 3, 'Something here')";
-		jdbcTemplate.update(sqlInsertVenue, TEST_VENUE);
-
-		boolean hasVenues = false;
-
-		for (Venue venue : dao.getAllVenues()) {
-			String example = venue.getName();
-			if (example.equals("Test Venue")) {
-				hasVenues = true;
+	@Test
+	public void get_all_parks() {
+		String sqlInsertPark = "INSERT INTO park(parkcode, parkname, state, acreage, elevationinfeet, milesoftrail, numberofcampsites, climate, yearfounded, annualvisitorcount, inspirationalquote, inspirationalquotesource, parkdescription, entryfee, numberofanimalspecies) "
+				+ "VALUES('testcode', ?, 'teststate', 100, 100, 100, 10, 'testclimate', 2000, 200, 'testquote', 'testsource', 'testdescript', 10, 10)";
+		jdbcTemplate.update(sqlInsertPark, TEST_PARK);
+		boolean hasParks = false;
+		for (Parks park : parksDao.getAllParks()) {
+			String example = park.getParkName();
+			if (example.equals("Test Park")) {
+				hasParks = true;
 			}
 		}
 
-		Assert.assertTrue(hasVenues);
+		Assert.assertTrue(hasParks);
 	}
-	 */
 	
-	@Test
-	public void get_all_parks() {
-		String sqlInsertPark = String sqlSavePark = "INSERT INTO park(parkcode, parkname, state, acreage, elevationinfeet, milesoftrail, numberofcampsites, climate, yearfounded, annualvisitorcount, inspirationalquote, inspirationalquotesource, parkdescription, entryfee, numberofanimalspecies) "
-				+ "VALUES('test',?,'testState',100,100,100,100,10,'testClimate',2000,100,'testQuote','testSource',?,?,?)";
-	}
 	
 	private Parks savePark(Parks newPark) {
 		
