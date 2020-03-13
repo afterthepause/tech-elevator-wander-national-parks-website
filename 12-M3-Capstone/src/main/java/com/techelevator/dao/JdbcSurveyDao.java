@@ -2,6 +2,7 @@ package com.techelevator.dao;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -52,8 +53,8 @@ public class JdbcSurveyDao implements SurveyDao{
 	
 	@Override
 	public Map<String, Integer> getCountOfSurveysPerParkCode() {
-		Map<String, Integer> surveyCountMap = new HashMap<String, Integer>();
-		String sqlCountSurveys = "select parkcode, count(parkcode) as surveycount from survey_result  group by parkcode;";
+		Map<String, Integer> surveyCountMap = new LinkedHashMap<String, Integer>();
+		String sqlCountSurveys = "select parkcode, count(parkcode) as surveycount from survey_result  group by parkcode order by surveycount desc";
 		SqlRowSet results = jdbcTemplate.queryForRowSet(sqlCountSurveys);
 		while(results.next()) {
 			surveyCountMap.put(results.getString("parkcode"), results.getInt("surveycount"));
