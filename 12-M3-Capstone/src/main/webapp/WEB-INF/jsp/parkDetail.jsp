@@ -56,16 +56,20 @@
 <p class="field1">Animal Species: </p> <p class="field2"><c:out value="${park.numberOfAnimalSpecies}" /></p>
 <br>
 </div>
+</div>
+</div>
 
 
 
-<c:url var="actionUrl" value="/changeWeather">
-<c:param name="currentParkCode" value="${param.currentParkCode}"/>
-</c:url>
+<div id="weatherComplete">
+	<c:url var="actionUrl" value="/changeWeather">
+	<c:param name="currentParkCode" value="${param.currentParkCode}"/>
+	</c:url>
+
 <div class="weatherSelector">
-	5 Day Weather Forecast:<br>
-	View Weather in:
-	<br>
+	<p class="fiveDay">5 Day Weather Forecast:</p><br>
+	<div class="tempConvert">
+	<p class="choose">View Temperature in:&nbsp;&nbsp;
 	<form method="POST" action="${actionUrl}">
 		<select name="isCelsius">
 			<option value="false" ${isCelsius ? '' : 'selected'}>Fahrenheit</option>
@@ -73,60 +77,70 @@
 		</select>
 		<input type="submit" name="submit" class="btn btn-success" value="Go"/>
 	</form>
+	</div>
 </div>
 
-<div class="weatherWrapper">
-
-	<div class="todayWeather">
+<div class="todayWeather">
+		<h4 class="todaysWeather">Today's Weather:</h4>
 		<c:set var="weather" value="${weatherList[0]}" />
-		<c:url var="weatherImg" value="/img/weather/${weather.forecast}.png" />
-		<img src="${weatherImg} " />
-		<c:out value="${weather.forecast }" />
-		<c:choose>
-		<c:when test="${isCelsius}">
-		H: <fmt:formatNumber type="Number" value= "${(weather.high - 32) / 1.8}" maxFractionDigits="0"/>
-		| L: <fmt:formatNumber type="Number" value="${(weather.low - 32) / 1.8}" maxFractionDigits="0"/>
-		<c:set var="tempScale" value="°C" />
-		</c:when>
-		<c:otherwise>
-		H: <c:out value="${weather.high}" />
-		| L:<c:out value="${weather.low}" />
-		<c:set var="tempScale" value="°F" />
-		</c:otherwise>
-		</c:choose> 
-		<br>
-		<c:out value="${weather.tempMessage }" />
-		<br>
-		<c:out value="${weather.forecastMessage}" />
-	</div>
-
-	<div class="extendedWeather">
-		<c:forEach varStatus="loop" var="weather" items="${weatherList}" begin="1">
-		<c:set var="weather" value="${weatherList[loop.index]}" />
-		<c:url var="weatherImg" value="/img/weather/${weather.forecast}.png" />
-		<img src="${weatherImg} " />
-		<c:out value="${weather.forecast }" />
-		<c:choose>
-		<c:when test="${isCelsius}">
-			 H: <fmt:formatNumber type="Number" value= "${(weather.high - 32) / 1.8}" maxFractionDigits="0"/>
-			 | L: <fmt:formatNumber type="Number" value="${(weather.low - 32) / 1.8}" maxFractionDigits="0"/>
+			<c:url var="weatherImg" value="/img/weather/${weather.forecast}.png" />
+			<img src="${weatherImg}" />
+			
+			<p class="forecast" style="text-align:center"><c:out value="${weather.forecast }" /><br>
+			
+			<c:choose>
+			<c:when test="${isCelsius}">
+			H: <fmt:formatNumber type="Number" value= "${(weather.high - 32) / 1.8}" maxFractionDigits="0"/>
+			| L: <fmt:formatNumber type="Number" value="${(weather.low - 32) / 1.8}" maxFractionDigits="0"/>
 			<c:set var="tempScale" value="°C" />
-		</c:when>
-		<c:otherwise>
-			 H: <c:out value="${weather.high}" />
-			 | L:<c:out value="${weather.low}" />
+			</c:when>
+			<c:otherwise>
+		
+			H: <c:out value="${weather.high}" />
+			| L:<c:out value="${weather.low}" />
 			<c:set var="tempScale" value="°F" />
-		</c:otherwise>
-		</c:choose> 
+			</c:otherwise>
+			</c:choose> 
+			<br>
+			<c:out value="${weatherList[0].tempMessage }" /><br>
+			<c:out value="${weatherList[0].forecastMessage}" />
+</div>
+
+<div class="extendedWeather">
+		<c:forEach varStatus="loop" var="weather" items="${weatherList}" begin="1">
+		<div class="days">
+		<c:set var="weather" value="${weatherList[loop.index]}" />
 		<br>
-		<c:out value="${weather.tempMessage }" />
+		<c:url var="weatherImg" value="/img/weather/${weather.forecast}.png" />
+		<img src="${weatherImg} " />
+		<br>
+		
+		<p class="weatherText" style="text-align:center">
+		<c:out value="${weather.forecast }" />
+		<br>
+		<c:choose>
+			<c:when test="${isCelsius}">
+			H: <fmt:formatNumber type="Number" value= "${(weather.high - 32) / 1.8}" maxFractionDigits="0"/>
+			| L: <fmt:formatNumber type="Number" value="${(weather.low - 32) / 1.8}" maxFractionDigits="0"/>
+			<c:set var="tempScale" value="°C" />
+			</c:when>
+			<c:otherwise>
+		
+			H: <c:out value="${weather.high}" />
+			| L:<c:out value="${weather.low}" />
+			<c:set var="tempScale" value="°F" />
+			</c:otherwise>
+		</c:choose> 
+			 
+		<br>
+		<%-- <c:out value="${weather.tempMessage }" />
 		<br>
 		<c:out value="${weather.forecastMessage}" />
-		</c:forEach>
+		 --%>
 	</div>
-</div>	
+		</c:forEach>
+		
+	</div>
 
-</div>  
-
-
+</div>
 </body>

@@ -1,3 +1,7 @@
+*{
+	box-sizing: border-box;
+}
+
 body.parklisting{
 	background-color: #362c26;
 	width:80%;
@@ -6,21 +10,20 @@ body.parklisting{
 }
 
 hr {
-height:0px;
-border:0;
-border-top:2px solid #29473e;
-margin:0;
-padding:0;
-}
+	height:0px;
+	border:0;
+	border-top:2px solid #29473e;
+	margin:0;
+	padding:0;
+	}
 
 
 
 div.buttons {
 	display: flex;
-  flex-wrap: nowrap;
-
-  justify-content: center;
-  margin:10px 0;
+  	flex-wrap: nowrap;
+	justify-content: center;
+	margin:10px 0;
 }
 
 img.homebutton {
@@ -274,9 +277,10 @@ p.ynp2description {
 	grid-area: ynp2desc;
 	padding: 0px 25px;
 }
-img.weatherimg {
-	width:10%;
-}
+
+
+
+
 
 
 div.parkdetail{
@@ -347,11 +351,7 @@ div.detaildesc{
 	margin:0 6.9%;
 }
 
-div.weather{
-	grid-area: weather;
-	justify-self: center;
-	margin:0 6.9%;
-}
+
 
 
 body > div.parkdetail > div.factstable > p.field1{
@@ -369,4 +369,93 @@ body > div.parkdetail > div.factstable > p.field2{
 	margin: 0;
 	
 }
+
+
+
+
+	#weatherComplete{
+	display:grid;
+	grid-template-columns:.25fr .75fr 2fr .25fr;
+	grid-template-areas:
+	". selector selector . "
+	". today week .";
+}
+	div.weatherSelector{
+	grid-area:selector;
+}
+div.tempConvert{
+	display:flex;
+	justify-content:flex-start;
+	align-items:baseline;
+}
+
+div.todayWeather{
+	grid-area: today;
+	display:flex;
+	flex-direction: column;
+	flex-wrap:nowrap;
+	flex-flow:space-evenly;
+	justify-content:center;
+	align-items:center;
+	margin:0;
+	padding:0;
+	text-align:center;
+	background-color: tan;
+}
+
+div.extendedWeather{
+	grid-area: week;
+	margin:0;
+	padding:0;
+	display:flex;
+	flex-direction: row;
+	flex-flow:space-evenly;
+	align-content:center;
+	align-items:flex-start;
+	text-align:center;
+	background-color: tan;
+	height:130px;
+}
+
+div.todayWeather> h4{
+	font-family: "Amatic SC", cursive;
+	font-size: 2vw;
+	font-weight: bold;
+	padding:0;
+	margin:0;
+	margin-left:10px;
+	color: #b98700;
+	text-align: center;
+	align-items:center;
+	justify-content:center;
+}
+
+#weatherComplete > div.todayWeather > img{
+	max-width:50%;
+}
+
+#weatherComplete > div.extendedWeather > div.days > img{
+	width:40%;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
