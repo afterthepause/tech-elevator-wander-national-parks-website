@@ -81,12 +81,14 @@
 </div>
 
 <div class="todayWeather">
-		<h4 class="todaysWeather">Today's Weather:</h4>
-		<c:set var="weather" value="${weatherList[0]}" />
+		<%-- <fmt:parseDate tyle="date" pattern="yyyy-MM-dd" value="${weatherList.getForecastDate(i)} var="date" />
+		<fmt:formatDate value="${date}" />
+		<c:set var="i" value="${i +1 }" />--%>
+		<c:set var="weather" value="${weatherList[0]}" /> 
 			<c:url var="weatherImg" value="/img/weather/${weather.forecast}.png" />
 			<img src="${weatherImg}" />
-			
-			<p class="forecast" style="text-align:center"><c:out value="${weather.forecast }" /><br>
+			<br>
+			<span class="forecast"><c:out value="${weather.forecast }" /><br>
 			
 			<c:choose>
 			<c:when test="${isCelsius}">
@@ -104,6 +106,7 @@
 			<br>
 			<c:out value="${weatherList[0].tempMessage }" /><br>
 			<c:out value="${weatherList[0].forecastMessage}" />
+			</span>
 </div>
 
 <div class="extendedWeather">
@@ -111,11 +114,12 @@
 		<div class="days">
 		<c:set var="weather" value="${weatherList[loop.index]}" />
 		<br>
+		
 		<c:url var="weatherImg" value="/img/weather/${weather.forecast}.png" />
 		<img src="${weatherImg} " />
 		<br>
 		
-		<p class="weatherText" style="text-align:center">
+		<span class="extWeather">
 		<c:out value="${weather.forecast }" />
 		<br>
 		<c:choose>
@@ -133,6 +137,7 @@
 		</c:choose> 
 			 
 		<br>
+		</span>
 		<%-- <c:out value="${weather.tempMessage }" />
 		<br>
 		<c:out value="${weather.forecastMessage}" />

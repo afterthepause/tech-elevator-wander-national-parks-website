@@ -1,5 +1,7 @@
 package com.techelevator.model;
 
+import java.time.LocalDate;
+
 public class Weather {
 
 	
@@ -7,7 +9,7 @@ public class Weather {
 	public int fiveDayForecastValue;
 	public Integer low;
 	public Integer high;
-
+	public LocalDate forecastDate;
 	public String forecast;
 	public String tempMessage = "";
 	public String forecastMessage = "";
@@ -15,6 +17,10 @@ public class Weather {
 	
 	public String getTempMessage() {
 		return tempMessage;
+	}
+	
+	public LocalDate getForecastDate(Long days) {
+		return LocalDate.now().plusDays(days);
 	}
 	
 	public void setTempMessage(Integer high, Integer low) {

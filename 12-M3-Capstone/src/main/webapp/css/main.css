@@ -400,34 +400,43 @@ div.todayWeather{
 	margin:0;
 	padding:0;
 	text-align:center;
-	background-color: tan;
+	background-color: #AA6C39 ;
+	border: 5px solid #804515;
+	display:inline-block;
 }
 
 div.extendedWeather{
 	grid-area: week;
-	margin:0;
-	padding:0;
+	
 	display:flex;
 	flex-direction: row;
 	flex-flow:space-evenly;
 	align-content:center;
 	align-items:flex-start;
 	text-align:center;
-	background-color: tan;
-	height:130px;
+	
+	
+	
+	
+}
+div.days {
+	background-color: #AA6C39 ;
+	height:auto;
+	border: 3px solid #804515;
 }
 
 div.todayWeather> h4{
 	font-family: "Amatic SC", cursive;
-	font-size: 2vw;
+	font-size: 5vw;
 	font-weight: bold;
 	padding:0;
 	margin:0;
 	margin-left:10px;
-	color: #b98700;
+	color: #FFFFFF;
 	text-align: center;
 	align-items:center;
 	justify-content:center;
+	
 }
 
 #weatherComplete > div.todayWeather > img{
@@ -438,8 +447,16 @@ div.todayWeather> h4{
 	width:40%;
 }
 
-
-
+.forecast{
+	color: #FFFFFF;
+	font-family:"Amatic SC", cursive;
+  font-size: 2.4vw;
+}
+.extWeather{
+	color: #FFFFFF;
+	font-family:"Amatic SC", cursive;
+  font-size: 2.4vw;
+}
 
 
 
