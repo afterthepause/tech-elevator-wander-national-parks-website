@@ -35,7 +35,7 @@ public class JdbcSurveyDao implements SurveyDao{
 	@Override
 	public List<Survey> getAllSurveys() {
 		List<Survey> allSurveys = new ArrayList<>();
-		String sqlSelectAllSurveys = "select * from survey_result";
+		String sqlSelectAllSurveys = "select * from survey_result WHERE (surveycount FROM survey_result > 1)";
 		SqlRowSet results = jdbcTemplate.queryForRowSet(sqlSelectAllSurveys);
 		while(results.next()) {
 			Survey survey = new Survey();

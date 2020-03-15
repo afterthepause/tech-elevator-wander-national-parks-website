@@ -1,51 +1,47 @@
-*{
+/* homepage and header css */
+* {
 	box-sizing: border-box;
 }
 
-body.parklisting{
+body.parklisting {
 	background-color: #362c26;
-	width:80%;
-	margin-left:auto;
-	margin-right:auto;
+	width: 80%;
+	margin-left: auto;
+	margin-right: auto;
 }
 
 hr {
-	height:0px;
-	border:0;
-	border-top:2px solid #29473e;
-	margin:0;
-	padding:0;
-	}
-
-
+	height: 0px;
+	border: 0;
+	border-top: 2px solid #29473e;
+	margin: 0;
+	padding: 0;
+}
 
 div.buttons {
 	display: flex;
-  	flex-wrap: nowrap;
+	flex-wrap: nowrap;
 	justify-content: center;
-	margin:10px 0;
+	margin: 10px 0;
 }
 
 img.homebutton {
-	max-width:30%;
-	height:auto;
-	margin:0;
-	
+	max-width: 30%;
+	height: auto;
+	margin: 0;
 }
-a.home{
-	display:flex;
+
+a.home {
+	display: flex;
 	justify-content: flex-end;
-	
-	
 }
 
 img.surveybutton {
-	max-width:30%;
-	height:auto;
-	
+	max-width: 30%;
+	height: auto;
 }
 
-html{
+html {
 	background-color: #29473e;
 }
 
@@ -54,97 +50,94 @@ div.header {
 	font-color: #b98700;
 	font-size: 1.5rem;
 	color: #b98700;
-	text-align:center;
+	text-align: center;
 	width: 100%;
 	height: auto;
-	margin-left:auto;
+	margin-left: auto;
 	margin-right: auto;
 	margin-bottom: 0;
-	padding-bottom:0;	
+	padding-bottom: 0;
 }
 
-img.logo{
+img.logo {
 	grid-area: header;
 	width: 70%;
-	justify:center;
+	justify: center;
 	padding-bottom: 20px;
 }
 
-div#homepage{
+div#homepage {
 	padding-top: 0;
-	margin-top:0;
+	margin-top: 0;
 	background-color: #362c26;
-	display:grid;
-	grid-template-columns: 1.25fr 2fr ;
-	grid-gap:0px;
+	display: grid;
+	grid-template-columns: 1.25fr 2fr;
+	grid-gap: 0px;
 	grid-template-rows: auto;
 	width: 100%;
-	margin-left:auto;
+	margin-left: auto;
 	margin-right: auto;
-	padding-top:0;
+	padding-top: 0;
 	padding-bottom: 5%;
-	grid-template-areas:
-	" cvnptitle cvnptitle "
+	grid-template-areas: 
+	" cvnptitle cvnptitle " 
 	" cvnpimg cvnpdesc "
-	
-	" enptitle enptitle "
-	" enpimg enpdesc "
-	
+	" enptitle enptitle " 
+	" enpimg enpdesc " 
 	" gcnptitle gcnptitle "
-	" gcnpimg gcnpdesc "
-	
-	" gnptitle gnptitle "
+	" gcnpimg gcnpdesc " 
+	" gnptitle gnptitle " 
 	" gnpimg gnpdesc "
-	
-	" gsmnptitle gsmnptitle "
+	" gsmnptitle gsmnptitle " 
 	" gsmnpimg gsmnpdesc "
-	
-	" gtnptitle gtnptitle "
-	" gtnpimg gtnpdesc "
-	
+	" gtnptitle gtnptitle " 
+	" gtnpimg gtnpdesc " 
 	" mrnptitle mrnptitle "
-	" mrnpimg mrnpdesc "
-	
-	" rmnptitle rmnptitle "
+	" mrnpimg mrnpdesc " 
+	" rmnptitle rmnptitle " 
 	" rmnpimg rmnpdesc "
-	
-	" ynptitle ynptitle "
-	" ynpimg ynpdesc "
-	
+	" ynptitle ynptitle " 
+	" ynpimg ynpdesc " 
 	" ynp2title ynp2title "
-	" ynp2img ynp2desc ";	
+	" ynp2img ynp2desc ";
 }
 
-a > img  {
+a>img {
 	max-width: 100%;
 	height: auto;
 	border: 2px solid #b98700;
 	display: block;
-	margin-left:10px;
-	margin-right:auto;
+	margin-left: 10px;
+	margin-right: auto;
+	transition:
 }
 
-h1{
+a>img:hover {
+	opacity: 0.5;
+}
+
+h1 {
 	font-family: "Amatic SC", cursive;
 	font-size: 6.5vw;
 	font-weight: bold;
-	padding:0;
-	margin:0;
-	margin-left:10px;
+	padding: 0;
+	margin: 0;
+	margin-left: 10px;
 	color: #b98700;
 	align-self: center;
 }
 
 h1.pagedetailh1 {
-	align-text:center;
+	align-text: center;
 }
-p{
-	font-family:"Open Sans Condensed", sans-serif;
+
+p {
+	font-family: "Open Sans Condensed", sans-serif;
 	font-size: 1.6vw;
 	text-align: left;
 	color: white;
-	padding:0;
-	margin:0;
+	padding: 0;
+	margin: 0;
 }
 
 h1.cvnpname {
@@ -171,7 +164,6 @@ a.enpimg {
 p.enpdescription {
 	grid-area: enpdesc;
 	padding: 0px 25px;
-	
 }
 
 h1.gcnpname {
@@ -208,7 +200,7 @@ a.gsmnpimg {
 	grid-area: gsmnpimg;
 }
 
-p.gsmnpdescription{
+p.gsmnpdescription {
 	grid-area: gsmnpdesc;
 	padding: 0px 25px;
 }
@@ -281,27 +273,22 @@ p.ynp2description {
 
 
 
-
-
-div.parkdetail{
+/*  park detail css */
+div.parkdetail {
 	padding-top: 0;
-	margin-top:0;
+	margin-top: 0;
 	background-color: #362c26;
-	display:grid;
-	grid-template-columns: 1.5fr 1fr ;
-	grid-gap:10px;
+	display: grid;
+	grid-template-columns: 1.5fr 1fr;
+	grid-gap: 10px;
 	grid-template-rows: auto;
 	width: 100%;
-	margin-left:auto;
+	margin-left: auto;
 	margin-right: auto;
-	padding-top:0;
+	padding-top: 0;
 	padding-bottom: 5%;
-	grid-template-areas:
-	" title title  "
-	" quote quote "
-	" img facts "
-	" desc desc  "
-	" weather weather";
+	grid-template-areas: " title title  " " quote quote " " img facts "
+		" desc desc  " " weather weather";
 }
 
 div.headingdetail {
@@ -315,164 +302,257 @@ div.quote {
 	font-style: italic;
 	margin: 0 6.9%;
 }
+
 div.detailimg {
 	justify-self: center;
 }
 
-div.detailimg > img{
-	grid-area:img;
-	margin-left:20px;
+div.detailimg>img {
+	grid-area: img;
+	margin-left: 20px;
 	border: 2px solid #b98700;
-	width:100%;
+	width: 100%;
 	height: auto;
 }
-div.factstable{
+
+div.factstable {
 	grid-area: facts;
-	
-  	width: 100%;
+	width: 100%;
 }
 
-div.factstable > p{
-	display:inline-block;
-	
+div.factstable>p {
+	display: inline-block;
 }
 
-body > div.parkdetail > div.factstable > h1{
+body>div.parkdetail>div.factstable>h1 {
 	font-family: "Amatic SC", cursive;
 	font-size: 4vw;
 	font-weight: bold;
 	color: #b98700;
-	margin: 0 5%; 
+	margin: 0 5%;
 }
 
-div.detaildesc{
+div.detaildesc {
 	grid-area: desc;
 	justify-self: center;
-	margin:0 6.9%;
+	margin: 0 6.9%;
 }
 
-
-
-
-body > div.parkdetail > div.factstable > p.field1{
+body>div.parkdetail>div.factstable>p.field1 {
 	font-weight: bolder;
 	color: #b98700;
-	margin:0;
-	margin: 0 5%;  ;
+	margin: 0;
+	margin: 0 5%;;
 }
 
-
-
-body > div.parkdetail > div.factstable > p.field2{
+body>div.parkdetail>div.factstable>p.field2 {
 	font-weight: bold;
 	color: #FFFFFF;
 	margin: 0;
-	
 }
 
-
-
-
-	#weatherComplete{
-	display:grid;
-	grid-template-columns:.25fr .75fr 2fr .25fr;
-	grid-template-areas:
-	". selector selector . "
-	". today week .";
-}
-	div.weatherSelector{
-	grid-area:selector;
-}
-div.tempConvert{
-	display:flex;
-	justify-content:flex-start;
-	align-items:baseline;
+#weatherComplete {
+	display: grid;
+	grid-template-columns: .25fr .75fr 2fr .25fr;
+	grid-template-areas: ". selector selector . " ". today week .";
 }
 
-div.todayWeather{
+div.weatherSelector {
+	grid-area: selector;
+}
+
+div.tempConvert {
+	display: flex;
+	align-items: baseline;
+}
+
+div.todayWeather {
 	grid-area: today;
-	display:flex;
+	display: flex;
 	flex-direction: column;
-	flex-wrap:nowrap;
-	flex-flow:space-evenly;
-	justify-content:center;
-	align-items:center;
-	margin:0;
-	padding:0;
-	text-align:center;
-	background-color: #AA6C39 ;
-	border: 5px solid #804515;
-	display:inline-block;
+	flex-wrap: nowrap;
+	flex-flow: space-evenly;
+	justify-content: center;
+	align-items: center;
+	margin: 0;
+	padding: 0;
+	text-align: center;
+	background-color: #29473e;
+	border: 2px solid #b98700;
+	display: inline-block;
+	background-blend-mode: lighten;
 }
 
-div.extendedWeather{
+div.extendedWeather {
 	grid-area: week;
-	
-	display:flex;
+	display: flex;
 	flex-direction: row;
-	flex-flow:space-evenly;
-	align-content:center;
-	align-items:flex-start;
-	text-align:center;
-	
-	
-	
-	
-}
-div.days {
-	background-color: #AA6C39 ;
-	height:auto;
-	border: 3px solid #804515;
+	flex-flow: space-evenly;
+	align-content: center;
+	align-items: flex-start;
+	text-align: center;
 }
 
-div.todayWeather> h4{
+div.days {
+	background-color: #29473e;
+	height: auto;
+	border: 1px solid #b98700;
+	background-blend-mode: lighten;
+}
+
+div.todayWeather>h4 {
 	font-family: "Amatic SC", cursive;
 	font-size: 5vw;
 	font-weight: bold;
-	padding:0;
-	margin:0;
-	margin-left:10px;
+	padding: 0;
+	margin: 0;
+	margin-left: 10px;
 	color: #FFFFFF;
 	text-align: center;
-	align-items:center;
-	justify-content:center;
+	align-items: center;
+	justify-content: center;
+}
+
+#weatherComplete>div.todayWeather>img {
+	max-width: 50%;
+}
+
+#weatherComplete>div.extendedWeather>div.days>img {
+	width: 40%;
+}
+
+.fiveDay {
+	font-family: "Amatic SC", cursive;
+	color: #b98700;
+	font-size: 4vw;
+	font-weight: bolder;
+	text-align: center;
+	align-items: center;
+	justify-content: center
+}
+
+.todayWeatherText {
+	font-family: "Amatic SC", cursive;
+	color: #b98700;
+	font-size: 3vw;
+	font-weight: bold;
+}
+
+.forecast {
+	color: #FFFFFF;
+	font-family: "Amatic SC", cursive;
+	font-size: 2.4vw;
+}
+
+.extWeather {
+	color: #FFFFFF;
+	font-family: "Amatic SC", cursive;
+	font-size: 2.4vw;
+}
+
+span.weatherNum {
+	color: #b98700;
+	font-family: "Amatic SC", cursive;
+	font-weight: bold;
+	font-size: 2.4vw;
+}
+
+.choose {
+	color: #FFFFFF;
+	font-family: "Amatic SC", cursive;
+	font-size: 2.4vw;
+}
+
+
+
+
+/*  survey page css */
+div#surveyPage {
+	padding-top: 0;
+	margin-top: 0;
+	background-color: #362c26;
+	display: flex-column;
+	width: 60%;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+div#title{
+	display:inline;
+	grid-area:title;
+}
+.surveyWrapper{
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	grid-gap: 0px;
+	grid-template-rows: auto;
+	grid-template-areas:
+	"left right"
+	"submit submit";
 	
 }
-
-#weatherComplete > div.todayWeather > img{
-	max-width:50%;
+#surveyOne{
+grid-area:left;	
 }
 
-#weatherComplete > div.extendedWeather > div.days > img{
-	width:40%;
+#surveyOne{
+grid-area:right;	
 }
 
-.forecast{
+#submitButton > input{
+	grid-area:submit;
+	align-items:center;
+	display:flex;
+}
+.surveyText {
+	grid-area:left;	
+	font-family: "Amatic SC", cursive;
+	color: #b98700;
+	font-size: 2.75vw;
+	font-weight: bold;
+}
+.surveyTextChoice {
+	grid-area:left;	
+	font-family: "Amatic SC", cursive;
 	color: #FFFFFF;
-	font-family:"Amatic SC", cursive;
-  font-size: 2.4vw;
+	font-size: 1.75vw;
+	font-weight: bold;
 }
-.extWeather{
+
+
+/* Favorite Parks Survey */
+.surveyImg{
+	width: 30%;
+	border: 2px solid #b98700;
+}
+h2 {
+	font-family: "Amatic SC", cursive;
+	font-size: 5vw;
+	font-weight: bold;
+	padding: 0;
+	margin: 0;
+	color: #b98700;
+	align-self: center;
+}
+h3 {
+	font-family: "Amatic SC", cursive;
+	font-size: 4vw;
+	font-weight: bold;
+	padding: 0;
+	margin: 0;
 	color: #FFFFFF;
-	font-family:"Amatic SC", cursive;
-  font-size: 2.4vw;
+	align-self: center;
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+hr.survey {
+	height: 0px;
+	border: 0;
+	border-top: 2px solid #29473e;
+	margin: 0 5% 0 5% ;
+	padding: 0;
+}
+div.surveyOut {
+	text-align: center;
+	margin:0;
+	padding:0;
+}

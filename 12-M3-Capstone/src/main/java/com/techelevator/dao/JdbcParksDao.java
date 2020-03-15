@@ -106,7 +106,6 @@ public class JdbcParksDao implements ParksDao {
 		weather.setLow(wResults.getInt("low"));
 		weather.setHigh(wResults.getInt("high"));
 		weather.setForecast(wResults.getString("forecast"));
-		weather.setTempMessage(wResults.getInt("high"),wResults.getInt("low"));
 		weather.setForecastMessage(wResults.getString("forecast"));
 		return weather;
 	}

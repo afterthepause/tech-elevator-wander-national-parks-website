@@ -15,43 +15,22 @@ public class Weather {
 	public String forecastMessage = "";
 	
 	
-	public String getTempMessage() {
-		return tempMessage;
-	}
-	
-	public LocalDate getForecastDate(Long days) {
-		return LocalDate.now().plusDays(days);
-	}
-	
-	public void setTempMessage(Integer high, Integer low) {
-		if (high >= 75 || low >= 75) {
-			this.tempMessage += "Pack an extra gallon of water... dude.";
-		}
-		if(high <= 20 || low <= 20) {
-			this.tempMessage += "Be careful, it's real cold out... dude. Don't stay out too long.";
-		}
-		if((high - low) >= 20) {
-			this.tempMessage += "Wear breathable layers... dude.";
-		}
-		
-	}
-	
 	public String getForecastMessage() {
 		return forecastMessage;
 	}
 	
 	public void setForecastMessage(String forecast) {
 		if (forecast.equals("snow")) {
-			this.forecastMessage = "Pack snowshoes... dude.";
+			this.forecastMessage = "Pack snowshoes";
 		}
 		if (forecast.equals("rain")) {
-			this.forecastMessage = "Pack rain gear and waterproof shoes... dude.";
+			this.forecastMessage = "Pack rain gear and waterproof shoes";
 		}
 		if (forecast.equals("thunderstorms")) {
-			this.forecastMessage = "Don't go hiking... dude.";
+			this.forecastMessage = "Don't go hiking";
 		}
 		if (forecast.equals("sunny")) {
-			this.forecastMessage = "Pack sunblock... dude.";
+			this.forecastMessage = "Pack sunblock";
 		}
 	}
 	
